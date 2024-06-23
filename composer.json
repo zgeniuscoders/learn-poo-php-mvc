@@ -1,0 +1,10 @@
+{
+    "name": "zgeniuscoders/poo",
+    "autoload": {
+        "psr-4": {
+            "ZFramework\\": "src/",
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}
