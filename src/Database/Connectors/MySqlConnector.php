@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFramework\Database\Turbo\Connectors;
+namespace ZFramework\Database\Connectors;
 
 use PDO;
 
@@ -11,6 +11,6 @@ class MySqlConnector extends Connector implements ConnectorInterface
         $dsn = $this->getDsn($config);
         $options = $this->getOptions($config);
 
-        return $this->createPdoConnection($dsn, $this->getConfig($config), $options);
+        return $this->createPdoConnection("mysql:".$dsn, $this->getConfig($config), $options);
     }
 }

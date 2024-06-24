@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App;
+namespace App\Models;
 
 use ZFramework\Database\Turbo\Model;
 
@@ -9,7 +9,7 @@ class User extends Model
 {
     protected string $table = "users";
 
-    public function user(){
-        $this->belongTo(User::class);
-    }
+    // public function user(){
+    //     $this->belongTo(User::class);
+    // }
 }

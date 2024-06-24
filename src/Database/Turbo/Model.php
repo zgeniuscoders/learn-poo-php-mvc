@@ -19,6 +19,9 @@ abstract class Model extends Turbo
     protected $withCount = [];
 
 
+    /**
+     * @var string
+     */
     protected string $table;
 
     /**

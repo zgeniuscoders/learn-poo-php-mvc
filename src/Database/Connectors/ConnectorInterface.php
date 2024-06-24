@@ -1,6 +1,6 @@
 <?php
 
-namespace ZFramework\Database\Turbo\Connectors;
+namespace ZFramework\Database\Connectors;
 
 use PDO;
 

@@ -2,7 +2,7 @@
 
 namespace ZFramework\Database\Turbo\Query;
 
-use ZFramework\Database\Turbo\Connectors\ConnectorInterface;
+use ZFramework\Database\Connectors\ConnectorInterface;
 
 class QueryBuilder
 {
