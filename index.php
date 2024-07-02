@@ -4,17 +4,16 @@ use DI\Container;
 
 use App\Models\User;
 use DI\ContainerBuilder;
-use ZFramework\Database\Turbo\Query\QueryBuilder;
-use ZFramework\Database\Connectors\MySqlConnector;
+use ZFramework\App;
 
 include "./vendor/autoload.php";
 include "./config.php";
 
-$builder = new ContainerBuilder();
-$builder->addDefinitions("./config.php");
-$container = $builder->build();
+// $builder = new ContainerBuilder();
+// $builder->addDefinitions("./config.php");
+// $container = $builder->build();
 
-$user = $container->get(User::class);
+// $user = $container->get(User::class);
 
 // $user = new User(new QueryBuilder(new MySqlConnector(), [
 //     "dsn" => "host=127.0.0.1;dbname=zf",
@@ -22,6 +21,18 @@ $user = $container->get(User::class);
 //     "options" => []
 // ]));
 
-foreach($user->all() as $u){
-    echo $u->id;
+// $app = new App("./config.php");
+
+
+$app = new App();
+$app->addDefinition("./config.php");
+$app->getContainer();
+
+$user = new User();
+
+// echo "<pre>";
+// var_dump($user->all());
+// echo "</pre>";
+foreach ($user->all() as $u) {
+    echo $u->email;
 }

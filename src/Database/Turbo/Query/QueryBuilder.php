@@ -4,7 +4,7 @@ namespace ZFramework\Database\Turbo\Query;
 
 use ZFramework\Database\Connectors\ConnectorInterface;
 
-class QueryBuilder
+abstract class QueryBuilder
 {
     public function __construct(private ConnectorInterface $connectorInterface, private array $config)
     {

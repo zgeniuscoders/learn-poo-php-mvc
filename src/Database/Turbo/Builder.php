@@ -22,9 +22,40 @@ class Builder
      */
     public function select()
     {
-        $stmt = $this->query->getConnector()->prepare("SELECT * FROM users");
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->query]);
-        $stmt->execute();
-        return $stmt->fetchAll();
+
+    }
+
+    public function find(string $id)
+    {
+        
+    }
+
+    public function update(string $id, array $data)
+    {
+    }
+
+    public function delete(string $id)
+    {
+    }
+
+    public function where($column, $operator = null, $value = null, $boolean = 'and')
+    {
+    }
+
+    public function whereAnd()
+    {
+    }
+
+    public function whereOr($column, $operator = null, $value = null)
+    {
+    }
+
+    public function whereNot($column, $operator = null, $value = null, $boolean = 'and')
+    {
+    }
+
+    public function getConnexion(): PDO
+    {
+        return $this->query->getConnector();
     }
 }

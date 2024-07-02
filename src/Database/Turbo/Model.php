@@ -2,7 +2,10 @@
 
 namespace ZFramework\Database\Turbo;
 
-abstract class Model extends Builder
+use PDO;
+use ZFramework\App;
+
+abstract class Model
 {
     /**
      * The relations to eager load on every query.
@@ -38,37 +41,31 @@ abstract class Model extends Builder
      */
     public $exists = false;
 
+
+    private $connexion;
+
+    public function __construct()
+    {
+        $this->connexion = $this->queryBuilder()->getDB();
+    }
+
+    private function queryBuilder(): Builder
+    {
+        $app = new App();
+        $app->addDefinition("./config.php");
+        $query = $app->getContainer()->get(Builder::class);
+        return $query;
+    }
+
+
+
     public function all()
     {
-        return $this->select();
-    }
-
-    public function find(string $id)
-    {
-    }
-
-    public function update(string $id, array $data)
-    {
-    }
-
-    public function delete(string $id)
-    {
-    }
-
-    public function where($column, $operator = null, $value = null, $boolean = 'and')
-    {
-    }
-
-    public function whereAnd()
-    {
-    }
-
-    public function whereOr($column, $operator = null, $value = null)
-    {
-    }
-
-    public function whereNot($column, $operator = null, $value = null, $boolean = 'and')
-    {
+        // return $this->select();
+        $stmt = $this->connexion->prepare("SELECT * FROM users");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_class($this), [$this->connexion]);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 
     // protected function belongTo(string $model): BelongTo{

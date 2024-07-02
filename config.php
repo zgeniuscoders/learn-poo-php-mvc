@@ -1,6 +1,7 @@
 <?php
 
 use ZFramework\Database\Connectors\MySqlConnector;
+use ZFramework\Database\Turbo\Builder;
 use ZFramework\Database\Turbo\Model;
 use ZFramework\Database\Turbo\Query\QueryBuilder;
 
@@ -14,5 +15,6 @@ return [
         "config" => ["username" => "root", "password" => ""],
         "options" => []
     ]),
-    Model::class => create()->constructor(get(QueryBuilder::class))
+
+    Builder::class => create()->constructor(get(QueryBuilder::class))
 ];
